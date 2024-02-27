@@ -7,9 +7,11 @@ dotenv.config({path:'./config/config.env'});
 connectDB();
 
 const cars = require('./routes/cars');
+const auth = require('./routes/auth');
 
 app.use(express.json());
 app.use('/api/v1/cars',cars);
+app.use('/api/v1/auth',auth);
 
 
 const PORT = process.env.PORT || 5000;
