@@ -28,12 +28,13 @@ const UserSchema = mongoose.Schema({
     password: {
         type: String,
         required: [true, "Please enter your password"],
+        minlength: 8,
         select: false
     },
     telephone_number: {
         type: String,
         required: [true, "Please enter your telephone number"],
-        length: [10,"Telephone number must contain 14 characters"],
+        length: [10,"Telephone number must contain 10 characters"],
     },
     createAt: {
         type: Date,
