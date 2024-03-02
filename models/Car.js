@@ -5,27 +5,27 @@ const CarSchema = mongoose.Schema({
         type: String,
         required : [true, "Please enter car's license"],
         unique: true,
-        maxLength: [6,"License can not be more than 6 characters"]
+        maxLength: [10,"License can not be more than 10 characters"]
     },
     type:{
         type: String,
         required: [true, "Please enter car's type"],
-        maxLength: [20,"Type can not be more than 20 characters"]
+        maxLength: [30,"Type can not be more than 30 characters"]
     },
     model:{
         type: String,
         required: [true, "Please enter car's model"],
-        maxlength: [20,"Type can not be more than 20 characters"]
+        maxlength: [30,"Type can not be more than 30 characters"]
     },
     color:{
         type: [String],
         required: [true, "Please enter car's color"],
-        maxlength: [10,"Color can not be more than 10 characters"]
+        maxlength: [20,"Color can not be more than 20 characters"]
     },
     fuel_type:{
         type: String,
         required: [true, "Please enter car's fuel type"],
-        maxlength: [10,"Fuel type can not be more than 10 characters"]
+        maxlength: [20,"Fuel type can not be more than 20 characters"]
     },
     year:{
         type: Number,
@@ -38,7 +38,7 @@ const CarSchema = mongoose.Schema({
     condition:{
         type: String,
         required: [true, "Please enter car's condition"],
-        maxlength: [10,"Condition can not be more than 10 characters"]
+        maxlength: [20,"Condition can not be more than 20 characters"]
         
     },
     image:{
