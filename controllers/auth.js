@@ -34,9 +34,9 @@ exports.login = async (req, res, next)=> {
         res.status(400).json({success: false, msg: 'Invalid credentials'});
     }
 
-    const matchPassword = await user.matchPassword(req.body.password)
-    if(!matchPassword){
-        res.status(400).json({success: false, msg: 'Invalid credentials'});
+    const isMatch = await user.matchPassword(password)
+    if(!isMatch){
+        res.status(401).json({success: false, msg: 'Invalid credentials'});
     }
     
     const token = user.getSignedJwtToken();
