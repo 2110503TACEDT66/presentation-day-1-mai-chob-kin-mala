@@ -41,22 +41,17 @@ const BookingSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    after:[
-        {
-            carId: {
-                type: mongoose.Schema.Types.ObjectId,
-            },
-            conditions:{
-                type: String,
-            },
-            delMileage:{
-                type: Number,
-            },
-            fuel:{
-                type: Number,
-            }
+    after: {
+        conditions:{
+            type: String,
+        },
+        delMileage:{
+            type: Number,
+        },
+        fuel:{
+            type: Number,
         }
-    ],
+    },
     createdAt: {
         type: Date,
         default: Date.now
