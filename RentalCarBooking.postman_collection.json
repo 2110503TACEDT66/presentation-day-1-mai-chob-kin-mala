@@ -12,6 +12,16 @@
 				{
 					"name": "Create New Car",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -23,7 +33,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"license\": \"ABC123\",\r\n  \"type\": \"Sedan\",\r\n  \"model\": \"Toyota Camry\",\r\n  \"color\": [\"Silver\"],\r\n  \"fuel_type\": \"Gasoline\",\r\n  \"year\": 2020,\r\n  \"mileage\": 30000,\r\n  \"condition\": \"Excellent\",\r\n  \"image\": [\"https://example.com/car1.jpg\"],\r\n  \"number_of_seats\": 5\r\n}\r\n",
+							"raw": "{\r\n  \"license\": \"ZZZ666\",\r\n  \"type\": \"Sedan\",\r\n  \"model\": \"Toyota Camry\",\r\n  \"color\": [\"Silver\"],\r\n  \"fuel_type\": \"Gasoline\",\r\n  \"year\": 2020,\r\n  \"mileage\": 30000,\r\n  \"condition\": \"Excellent\",\r\n  \"image\": [\"https://example.com/car1.jpg\"],\r\n  \"number_of_seats\": 5\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -88,6 +98,16 @@
 				{
 					"name": "Update Single Car",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
@@ -124,6 +144,16 @@
 				{
 					"name": "Delete Single Car",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -218,6 +248,16 @@
 				{
 					"name": "Get Logged In User with Token",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -271,6 +311,72 @@
 								"v1",
 								"auth",
 								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "Get All Bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/bookings/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Car Bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/cars/1/bookings",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"1",
+								"bookings"
 							]
 						}
 					},
