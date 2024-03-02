@@ -8,13 +8,13 @@ const {
     updateCar,
     deleteCar,
 } = require("../controllers/cars");
-const { protect } = require("../middleware/auth");
+const { protect, authorize } = require("../middleware/auth");
 
-router.route("/").get(getCars).post(protect, createCar);
+router.route("/").get(getCars).post(protect, authorize('admin'), createCar);
 router
     .route("/:id")
     .get(getCar)
-    .put(protect, updateCar)
-    .delete(protect, deleteCar);
+    .put(protect, authorize('admin'), updateCar)
+    .delete(protect, authorize('admin'), deleteCar);
 
 module.exports = router;
