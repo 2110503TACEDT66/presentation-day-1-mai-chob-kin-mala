@@ -52,6 +52,16 @@ const CarSchema = mongoose.Schema({
         type: Number,
         required: [true, "Please add car's number_of_seats"],
     },
+    status: {
+        type: String,
+        enum: [
+            "available",
+            "rented",
+            "maintenance",
+            "broken"
+        ],
+        default: "available"
+    }
 },{
     toJSON: {virtuals: true},
     toObject: {virtuals: true}
@@ -62,6 +72,11 @@ CarSchema.virtual('bookings', {
     localField: '_id',
     foreignField: 'car',
     justOne: false
+});
+
+CarSchema.pre('deleteOne',{document: true, query: false}, async function(next){
+    console.log(`Bookings being removed from car ${this._id}`);
+    await this.model()
 });
 
 module.exports = mongoose.model("Car", CarSchema);
