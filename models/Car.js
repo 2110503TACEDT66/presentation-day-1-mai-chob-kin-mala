@@ -48,6 +48,16 @@ const CarSchema = mongoose.Schema({
         type: Number,
         required: [true, "Please enter car's number_of_seats"],
     },
+},{
+    toJSON: {virtuals: true},
+    toObject: {virtuals: true}
+});
+
+CarSchema.virtual('bookings', {
+    ref: 'Booking',
+    localField: '_id',
+    foreignField: 'car',
+    justOne: false
 });
 
 module.exports = mongoose.model("Car", CarSchema);
