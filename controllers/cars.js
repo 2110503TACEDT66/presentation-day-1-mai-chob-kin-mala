@@ -12,6 +12,7 @@ exports.getCars = async (req, res, next) => {
 exports.createCar = async (req, res, next) => {
     const car = await Car.create(req.body);
     res.status(201).json({ success: true, data: car });
+    
 };
 
 exports.getCar = async (req, res, next) => {
