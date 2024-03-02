@@ -16,7 +16,6 @@ exports.createCar = async (req, res, next) => {
     } catch (err) {
         res.status(400).json({ success: false });
     }
-
 };
 
 exports.getCar = async (req, res, next) => {
