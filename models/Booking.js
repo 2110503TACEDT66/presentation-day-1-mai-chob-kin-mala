@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 const BookingSchema = new mongoose.Schema({
     car: {
         type:mongoose.Schema.Types.ObjectId,
-        require: [true, "Please add Cars ID"]
+        require: [true, "Please add Cars ID"],
+        ref: 'Car'
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        require: [true, "Please add User ID"]
+        require: [true, "Please add User ID"],
+        ref: 'User'
     },
     startDate: {
         type: Date,
