@@ -5,7 +5,7 @@ exports.getCars = async (req, res, next) => {
 
     const reqQuery = {...req.query};
 
-    const removeFields = ['select','sort'];
+    const removeFields = ['select', 'sort', 'page', 'limit'];
 
     removeFields.forEach(param => delete reqQuery[param]);
     console.log(reqQuery);
@@ -26,11 +26,38 @@ exports.getCars = async (req, res, next) => {
         query = query.sort('-createdAt');
     }
 
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = parseInt(req.query.limit, 10) || 25;
+    const startIndex = (page-1) * limit;
+    const endIndex = page * limit
+    const total = await Car.countDocuments();
+
+    query=query.skip(startIndex).limit(limit);
+
     try {
         const cars = await query;
-        res.status(200).json({ success: true, count: cars.length, data: cars });
+
+        const pagination = {
+            current:page,
+        };
+
+        if(endIndex<total){
+            pagination.next = {
+                page:page+1,
+                limit
+            }
+        }
+
+        if(startIndex>0) {
+            pagination.prev = {
+                page:page-1,
+                limit
+            }
+        }
+
+        res.status(200).json({ success: true, count: cars.length, pagination, data: cars });
     } catch (err) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, msg:err.stack });
     }
 };
 
