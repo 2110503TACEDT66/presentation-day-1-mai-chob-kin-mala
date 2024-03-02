@@ -34,7 +34,7 @@ const BookingSchema = new mongoose.Schema({
         enum: [
             "used",
             "canceled",
-            "activating",
+            "rented",
             "waiting"
         ],
         default: "waiting"
