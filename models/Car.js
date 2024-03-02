@@ -1,54 +1,53 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const CarSchema = mongoose.Schema({
-    license:{
+    license: {
         type: String,
-        required : [true, "Please enter car's license"],
+        required: [true, "Please enter car's license"],
         unique: true,
-        maxLength: [10,"License can not be more than 10 characters"]
+        maxLength: [10, "License can not be more than 10 characters"],
     },
-    type:{
+    type: {
         type: String,
         required: [true, "Please enter car's type"],
-        maxLength: [30,"Type can not be more than 30 characters"]
+        maxLength: [30, "Type can not be more than 30 characters"],
     },
-    model:{
+    model: {
         type: String,
         required: [true, "Please enter car's model"],
-        maxlength: [30,"Type can not be more than 30 characters"]
+        maxlength: [30, "Type can not be more than 30 characters"],
     },
-    color:{
+    color: {
         type: [String],
         required: [true, "Please enter car's color"],
-        maxlength: [20,"Color can not be more than 20 characters"]
+        maxlength: [20, "Color can not be more than 20 characters"],
     },
-    fuel_type:{
+    fuel_type: {
         type: String,
         required: [true, "Please enter car's fuel type"],
-        maxlength: [20,"Fuel type can not be more than 20 characters"]
+        maxlength: [20, "Fuel type can not be more than 20 characters"],
     },
-    year:{
+    year: {
         type: Number,
         required: [true, "Please enter car's year"],
     },
-    mileage:{
+    mileage: {
         type: Number,
         required: [true, "Please enter car's mileage"],
     },
-    condition:{
+    condition: {
         type: String,
         required: [true, "Please enter car's condition"],
-        maxlength: [20,"Condition can not be more than 20 characters"]
-        
+        maxlength: [20, "Condition can not be more than 20 characters"],
     },
-    image:{
+    image: {
         type: [String],
         required: [true, "Please enter car's image"],
     },
-    number_of_seats:{
+    number_of_seats: {
         type: Number,
         required: [true, "Please enter car's number_of_seats"],
-    }
+    },
 });
 
-module.exports = mongoose.model('Car',CarSchema);
+module.exports = mongoose.model("Car", CarSchema);
