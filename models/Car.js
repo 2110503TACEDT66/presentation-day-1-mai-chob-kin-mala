@@ -31,6 +31,10 @@ const CarSchema = mongoose.Schema({
         type: Number,
         required: [true, "Please enter car's year"],
     },
+    price: {
+        type: Number,
+        required: [true, "Please add a price (Baht/hour)"]
+    },
     mileage: {
         type: Number,
         required: [true, "Please enter car's mileage"],
