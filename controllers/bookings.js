@@ -3,14 +3,32 @@ const Booking = require('../models/Booking');
 exports.getBookings = async (req, res, next) => {
     let query;
     if (req.user.role !== 'admin') {
-        query = Booking.find({ user: req.user.id });
+        query = Booking.find({ user: req.user.id }).populate({
+            path: 'car',
+            select: 'license type model color fuel_type year'
+        }).populate({
+            path: 'user',
+            select: 'SSN name email telephone_number role'
+        });
     }
     else {
         if (req.params.hospitalId) {
             console.log(req.params.hospitalId);
-            query = Booking.find({ hospital: req.params.hospitalId });
+            query = Booking.find({ hospital: req.params.hospitalId }).populate({
+                path: 'car',
+                select: 'license type model color fuel_type year'
+            }).populate({
+                path: 'user',
+                select: 'SSN name email telephone_number role'
+            });
         } else {
-            query = Booking.find();
+            query = Booking.find().populate({
+                path: 'car',
+                select: 'license type model color fuel_type year'
+            }).populate({
+                path: 'user',
+                select: 'SSN name email telephone_number role'
+            });
         }
     }
     try {
