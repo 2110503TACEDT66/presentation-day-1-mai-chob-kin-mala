@@ -1,8 +1,13 @@
 const Car = require("../models/Car");
 
 exports.getCars = async (req, res, next) => {
+    let query;
+    let queryStr = JSON.stringify(req.query);
+    queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
+    query = Car.find(JSON.parse(queryStr));
+
     try {
-        const cars = await Car.find();
+        const cars = await query;
         res.status(200).json({ success: true, count: cars.length, data: cars });
     } catch (err) {
         res.status(400).json({ success: false });
