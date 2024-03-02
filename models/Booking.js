@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const BookingSchema = new mongoose.Schema({
-    carId: {
+    car: {
         type:mongoose.Schema.Types.ObjectId,
         require: [true, "Please add Cars ID"]
     },
-    userId: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         require: [true, "Please add User ID"]
     },
