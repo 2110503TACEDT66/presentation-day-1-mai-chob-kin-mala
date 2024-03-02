@@ -3,7 +3,7 @@ const Car = require('../models/Car');
 exports.getCars = async (req, res, next) => {
     try{
         const cars = await Car.find();
-        res.status(200).json({success: true, data: cars});
+        res.status(200).json({success: true, count:cars.length, data: cars});
     }
     catch(err){
         res.status(400).json({success: false});
