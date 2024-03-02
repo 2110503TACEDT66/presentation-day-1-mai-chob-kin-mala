@@ -13,11 +13,9 @@ exports.createCar = async (req, res, next) => {
     try {
         const car = await Car.create(req.body);
         res.status(201).json({ success: true, data: car });
-    }
-    catch (err) {
+    } catch (err) {
         res.status(400).json({ success: false });
     }
-
 };
 
 exports.getCar = async (req, res, next) => {
