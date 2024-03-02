@@ -36,10 +36,6 @@ const UserSchema = mongoose.Schema({
         required: [true, "Please add a telephone number"],
         length: [10,"Telephone number must contain 10 characters"],
     },
-    createAt: {
-        type: Date,
-        default: Date.now
-    },
     role: {
         type: String,
         enum: ["admin","user"],
