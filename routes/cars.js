@@ -13,7 +13,7 @@ const { protect, authorize } = require("../middleware/auth");
 
 const bookingRouter = require("./bookings");
 
-router.route('/:carId/appointments/', bookingRouter);
+router.use('/:carId/bookings/', bookingRouter);
 
 router.route("/").get(getCars).post(protect, authorize('admin'), createCar);
 router
