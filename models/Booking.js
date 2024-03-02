@@ -7,6 +7,7 @@ const BookingSchema = new mongoose.Schema({
     },
     endDate: {
         type:Date,
+        default: new Date(this.startDate.getTime() + this.duration)
     },
     duration:{
         type: Number,
