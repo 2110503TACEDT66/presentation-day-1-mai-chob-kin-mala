@@ -6,14 +6,14 @@ const UserSchema = mongoose.Schema({
     SSN: {
         type: String,
         unique: [true, "This SSN is already used"],
-        required: [true, "Please enter your SSN"],
+        required: [true, "Please add your SSN"],
         length: [14,"SSN must contain 14 characters"],
 
     },
     name: {
         type: String,
         maxlength: [50,"Name can not be more than 50 characters"],
-        required: [true, "Please enter your name"]
+        required: [true, "Please add a name"]
     },
     email: {
         type: String,
@@ -22,18 +22,18 @@ const UserSchema = mongoose.Schema({
             'Please add a valid email'
         ],
         unique: [true, "This email is already used"],
-        required: [true, "Please enter your email"]
+        required: [true, "Please add a email"]
 
     },
     password: {
         type: String,
-        required: [true, "Please enter your password"],
+        required: [true, "Please add a password"],
         minlength: 8,
         select: false
     },
     telephone_number: {
         type: String,
-        required: [true, "Please enter your telephone number"],
+        required: [true, "Please add a telephone number"],
         length: [10,"Telephone number must contain 10 characters"],
     },
     createAt: {
