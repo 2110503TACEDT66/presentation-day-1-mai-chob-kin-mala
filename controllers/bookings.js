@@ -5,7 +5,7 @@ exports.getBookings = async (req, res, next) => {
     if (req.user.role !== 'admin') {
         query = Booking.find({ user: req.user.id }).populate({
             path: 'car',
-            select: 'license type model color fuel_type year'
+            select: 'license type model color fuel_type year status'
         }).populate({
             path: 'user',
             select: 'SSN name email telephone_number role'
@@ -16,7 +16,7 @@ exports.getBookings = async (req, res, next) => {
             console.log(req.params.hospitalId);
             query = Booking.find({ hospital: req.params.hospitalId }).populate({
                 path: 'car',
-                select: 'license type model color fuel_type year'
+                select: 'license type model color fuel_type year status'
             }).populate({
                 path: 'user',
                 select: 'SSN name email telephone_number role'
@@ -24,7 +24,7 @@ exports.getBookings = async (req, res, next) => {
         } else {
             query = Booking.find().populate({
                 path: 'car',
-                select: 'license type model color fuel_type year'
+                select: 'license type model color fuel_type year status'
             }).populate({
                 path: 'user',
                 select: 'SSN name email telephone_number role'
