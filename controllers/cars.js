@@ -2,9 +2,29 @@ const Car = require("../models/Car");
 
 exports.getCars = async (req, res, next) => {
     let query;
+
+    const reqQuery = {...req.query};
+
+    const removeFields = ['select','sort'];
+
+    removeFields.forEach(param => delete reqQuery[param]);
+    console.log(reqQuery);
+
     let queryStr = JSON.stringify(req.query);
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
     query = Car.find(JSON.parse(queryStr));
+
+    if(req.query.select) {
+        const fields = req.query.select.split(',').join(' ');
+        query = query.select(fields);
+    }
+
+    if(req.query.sort) {
+        const sortBy = req.query.sort.split(',').join(' ');
+        query = query.sort(sortBy);
+    } else{
+        query = query.sort('-createdAt');
+    }
 
     try {
         const cars = await query;
