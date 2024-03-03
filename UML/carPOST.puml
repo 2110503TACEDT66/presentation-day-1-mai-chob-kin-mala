@@ -1,0 +1,23 @@
+!@startuml Manage Car (POST)
+
+header Sameple VacQ Sequence Diagram
+footer Page %page% of %lastpage%
+title "Manage Car (POST)"
+
+participant "Client" as client
+participant "<<javaScript>>\n:server" as server
+participant "<<router>>\n:Cars" as routerCars
+participant "<<controllers>>\n:Cars" as controllersCars
+participant "<<model>>\n:Car" as modelCar
+database "<<MongoDB>>\n:Cars" as CarsDatabase
+
+client->server ++:req.post('/Cars')
+server->routerCars ++:app.use('/Cars',Cars)
+routerCars -> controllersCars ++:createCar()
+controllersCars->modelCar ++:create(req.body);
+modelCar->CarsDatabase ++:CarSchema
+CarsDatabase --> modelCar --:car
+modelCar --> controllersCars --:car
+controllersCars->client --:response
+
+!@enduml
