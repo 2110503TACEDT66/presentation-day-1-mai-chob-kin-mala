@@ -1,4 +1,5 @@
 const Booking = require('../models/Booking');
+const Car = require('../models/Car');
 
 exports.getBookings = async (req, res, next) => {
     let query;
@@ -12,9 +13,9 @@ exports.getBookings = async (req, res, next) => {
         });
     }
     else {
-        if (req.params.hospitalId) {
-            console.log(req.params.hospitalId);
-            query = Booking.find({ hospital: req.params.hospitalId }).populate({
+        if (req.params.carId) {
+            console.log(req.params.carId);
+            query = Booking.find({ car: req.params.carId }).populate({
                 path: 'car',
                 select: 'license type model color fuel_type year status'
             }).populate({
@@ -40,7 +41,7 @@ exports.getBookings = async (req, res, next) => {
         });
     } catch (err) {
         console.log(err);
-        return res.status(500).json({ success: false, message: "Cannot find Appointment" });
+        return res.status(500).json({ success: false, message: "Cannot find Booking" });
     }
 };
 
@@ -76,29 +77,29 @@ exports.getBooking = async (req, res, next) => {
 
 exports.addBooking = async (req, res, next) => {
     try {
-      req.body.hospital = req.params.hospitalId;
+      req.body.car = req.params.carId;
   
-      const hospital = await Hospital.findById(req.params.hospitalId);
+      const car = await Car.findById(req.params.carId);
   
-      if (!hospital) {
+      if (!car) {
         return res
           .status(404)
           .json({
             success: false,
-            message: `No hospital with the id of ${req.params.hospitalId}`,
+            message: `No car with the id of ${req.params.carId}`,
           });
       }
   
-      const appointment = await Appointment.create(req.body);
+      const booking = await Booking.create(req.body);
       res.status(200).json({
         success: true,
-        data: appointment,
+        data: booking,
       });
     } catch (error) {
       console.log(error);
       return res
         .status(500)
-        .json({ success: false, message: "Cannot create Appointment" });
+        .json({ success: false, message: "Cannot create Booking" });
     }
   };
 
@@ -107,7 +108,7 @@ exports.updateBooking = async (req, res, next) => {
         let booking = await Booking.findById(req.params.id);
 
         if (!booking) {
-            return res.status(404).json({ success: false, message: `No appointment with the id of ${req.params.id}` });
+            return res.status(404).json({ success: false, message: `No booking with the id of ${req.params.id}` });
         }
 
         booking = await Booking.findByIdAndUpdate(req.params.id, req.body, {
@@ -128,17 +129,17 @@ exports.updateBooking = async (req, res, next) => {
 
 exports.deleteBooking = async (req, res, nex) => {
     try {
-      const appointment = await Appointment.findById(req.params.id);
-      if (!appointment) {
+      const booking = await Booking.findById(req.params.id);
+      if (!booking) {
         return res
           .status(404)
           .json({
             success: false,
-            message: `No appointment with the id of ${req.params.id}`,
+            message: `No booking with the id of ${req.params.id}`,
           });
       }
   
-      await appointment.deleteOne();
+      await booking.deleteOne();
   
       res.status(200).json({
         success: true,
@@ -148,7 +149,7 @@ exports.deleteBooking = async (req, res, nex) => {
       console.log(error);
       return res
         .status(500)
-        .json({ success: false, message: "Cannot delete Appointment" });
+        .json({ success: false, message: "Cannot delete Booking" });
     }
 };
   
