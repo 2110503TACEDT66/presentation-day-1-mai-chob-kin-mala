@@ -13,7 +13,8 @@ const BookingSchema = new mongoose.Schema({
     },
     startDate: {
         type: Date,
-        require: [true, "Please add a start date"]
+        require: [true, "Please add a start date"],
+        default: Date.now
     },
     endDate: {
         type:Date,
