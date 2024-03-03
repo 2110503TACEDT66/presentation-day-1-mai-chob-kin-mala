@@ -47,7 +47,7 @@ exports.getBookings = async (req, res, next) => {
 
 exports.getBooking = async (req, res, next) => {
     try {
-        const booking = await Booking.findById(req.params.id).populate({
+        const booking = await Booking.find({_id:req.params.id, user:req.user.id}).populate({
             path: 'car',
             select: 'license type model color fuel_type year status'
         }).populate({
