@@ -77,31 +77,44 @@ exports.getBooking = async (req, res, next) => {
 
 exports.addBooking = async (req, res, next) => {
     try {
-      req.body.car = req.params.carId;
-  
-      const car = await Car.findById(req.params.carId);
-  
-      if (!car) {
-        return res
-          .status(404)
-          .json({
-            success: false,
-            message: `No car with the id of ${req.params.carId}`,
-          });
-      }
-  
-      const booking = await Booking.create(req.body);
-      res.status(200).json({
-        success: true,
-        data: booking,
-      });
+        req.body.car = req.params.carId;
+
+        const car = await Car.findById(req.params.carId);
+
+        if (!car) {
+            return res
+                .status(404)
+                .json({
+                    success: false,
+                    message: `No car with the id of ${req.params.carId}`,
+                });
+        }
+
+        req.body.user = req.user.id;
+
+        const existedBookings = await Booking.find({ user: req.user.id });
+
+        if (existedBookings.length >= 3 && req.user.role !== "admin") {
+            return res
+                .status(400)
+                .json({
+                    success: false,
+                    message: `The user with ID ${req.user.id} has already made 3 bookings`,
+                });
+        }
+
+        const booking = await Booking.create(req.body);
+        res.status(200).json({
+            success: true,
+            data: booking,
+        });
     } catch (error) {
-      console.log(error);
-      return res
-        .status(500)
-        .json({ success: false, message: "Cannot create Booking" });
+        console.log(error);
+        return res
+            .status(500)
+            .json({ success: false, message: "Cannot create Booking" });
     }
-  };
+};
 
 exports.updateBooking = async (req, res, next) => {
     try {
@@ -109,6 +122,18 @@ exports.updateBooking = async (req, res, next) => {
 
         if (!booking) {
             return res.status(404).json({ success: false, message: `No booking with the id of ${req.params.id}` });
+        }
+
+        if (
+            booking.user.toString() !== req.user.id &&
+            req.user.role !== "admin"
+        ) {
+        return res
+            .status(401)
+            .json({
+            success: false,
+            message: `User ${req.user.id} is not authorized to update this booking`,
+            });
         }
 
         booking = await Booking.findByIdAndUpdate(req.params.id, req.body, {
@@ -129,27 +154,38 @@ exports.updateBooking = async (req, res, next) => {
 
 exports.deleteBooking = async (req, res, nex) => {
     try {
-      const booking = await Booking.findById(req.params.id);
-      if (!booking) {
+        const booking = await Booking.findById(req.params.id);
+        if (!booking) {
+            return res
+                .status(404)
+                .json({
+                    success: false,
+                    message: `No booking with the id of ${req.params.id}`,
+                });
+        }
+
+        if (
+            booking.user.toString() !== req.user.id &&
+            req.user.role !== "admin"
+        ) {
         return res
-          .status(404)
-          .json({
+            .status(401)
+            .json({
             success: false,
-            message: `No booking with the id of ${req.params.id}`,
-          });
-      }
-  
-      await booking.deleteOne();
-  
-      res.status(200).json({
-        success: true,
-        data: {},
-      });
+            message: `User ${req.user.id} is not authorized to delete this booking`,
+            });
+        }
+
+        await booking.deleteOne();
+
+        res.status(200).json({
+            success: true,
+            data: {},
+        });
     } catch (error) {
-      console.log(error);
-      return res
-        .status(500)
-        .json({ success: false, message: "Cannot delete Booking" });
+        console.log(error);
+        return res
+            .status(500)
+            .json({ success: false, message: "Cannot delete Booking" });
     }
 };
-  
