@@ -82,7 +82,7 @@ exports.updateBooking = async (req, res, next) => {
             return res.status(404).json({ success: false, message: `No appointment with the id of ${req.params.id}` });
         }
 
-        booking = Booking.findByIdAndUpdate(req.params.id, req.body, {
+        booking = await Booking.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
             runValidators: true
         });
