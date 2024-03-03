@@ -74,6 +74,34 @@ exports.getBooking = async (req, res, next) => {
     }
 };
 
+exports.addBooking = async (req, res, next) => {
+    try {
+      req.body.hospital = req.params.hospitalId;
+  
+      const hospital = await Hospital.findById(req.params.hospitalId);
+  
+      if (!hospital) {
+        return res
+          .status(404)
+          .json({
+            success: false,
+            message: `No hospital with the id of ${req.params.hospitalId}`,
+          });
+      }
+  
+      const appointment = await Appointment.create(req.body);
+      res.status(200).json({
+        success: true,
+        data: appointment,
+      });
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(500)
+        .json({ success: false, message: "Cannot create Appointment" });
+    }
+  };
+
 exports.updateBooking = async (req, res, next) => {
     try {
         let booking = await Booking.findById(req.params.id);
