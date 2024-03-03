@@ -6,12 +6,12 @@ const CarSchema = mongoose.Schema({
         type: String,
         required: [true, "Please add car's license"],
         unique: true,
-        maxLength: [10, "License can not be more than 10 characters"],
+        maxlength: [10, "License can not be more than 10 characters"],
     },
     type: {
         type: String,
         required: [true, "Please add car's type"],
-        maxLength: [30, "Type can not be more than 30 characters"],
+        maxlength: [30, "Type can not be more than 30 characters"],
     },
     model: {
         type: String,
