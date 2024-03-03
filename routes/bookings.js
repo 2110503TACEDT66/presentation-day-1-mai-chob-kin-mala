@@ -4,10 +4,10 @@ const {getBookings,getBooking, updateBooking, addBooking, deleteBooking} = requi
 
 const router = express.Router({mergeParams: true});
 
-const {protect} = require('../middleware/auth');
+const {protect, authorize} = require('../middleware/auth');
 
-router.route('/').get(protect, getBookings).post(protect, addBooking);
-router.route('/:id').get(protect, getBooking).put(protect, updateBooking).delete(protect, deleteBooking);
+router.route('/').get(protect, getBookings).post(protect, authorize('admin'), addBooking);
+router.route('/:id').get(protect, getBooking).put(protect, authorize('admin'), updateBooking).delete(protect, authorize('admin'), deleteBooking);
 
 
 module.exports = router;
