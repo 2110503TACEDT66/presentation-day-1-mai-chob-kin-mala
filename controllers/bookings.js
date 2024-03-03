@@ -44,12 +44,42 @@ exports.getBookings = async (req, res, next) => {
     }
 };
 
-exports.updateAppointment = async (req, res, next) => {
-    try{
+exports.getBooking = async (req, res, next) => {
+    try {
+        const booking = await Booking.findById(req.params.id).populate({
+            path: 'car',
+            select: 'license type model color fuel_type year status'
+        }).populate({
+            path: 'user',
+            select: 'SSN name email telephone_number role'
+        });
+        if (!booking) {
+            return res
+                .status(404)
+                .json({
+                    success: false,
+                    message: `No booking with the id of ${req.params.id}`,
+                });
+        }
+
+        res.status(200).json({
+            success: true,
+            data: booking,
+        });
+    } catch (error) {
+        console.log(error);
+        return res
+            .status(500)
+            .json({ success: false, message: "Cannot find Booking" });
+    }
+};
+
+exports.updateBooking = async (req, res, next) => {
+    try {
         let booking = await Booking.findById(req.params.id);
 
-        if(!booking) {
-            return res.status(404).json({success:false, message:`No appointment with the id of ${req.params.id}`});
+        if (!booking) {
+            return res.status(404).json({ success: false, message: `No appointment with the id of ${req.params.id}` });
         }
 
         booking = Booking.findByIdAndUpdate(req.params.id, req.body, {
@@ -62,8 +92,8 @@ exports.updateAppointment = async (req, res, next) => {
             data: booking
         });
     }
-    catch (err){
+    catch (err) {
         console.log(err);
-        return res.status(500).json({success: false, message:"Cannot update Booking"});
+        return res.status(500).json({ success: false, message: "Cannot update Booking" });
     }
 }
