@@ -6,7 +6,7 @@ exports.getBookings = async (req, res, next) => {
     if (req.user.role !== 'admin') {
         query = Booking.find({ user: req.user.id }).populate({
             path: 'car',
-            select: 'license type model color fuel_type year status'
+            select: 'license type model color fuel_type year price condition number_of_seats status'
         }).populate({
             path: 'user',
             select: 'SSN name email telephone_number role'
@@ -17,7 +17,7 @@ exports.getBookings = async (req, res, next) => {
             console.log(req.params.carId);
             query = Booking.find({ car: req.params.carId }).populate({
                 path: 'car',
-                select: 'license type model color fuel_type year status'
+                select: 'license type model color fuel_type year price condition number_of_seats status'
             }).populate({
                 path: 'user',
                 select: 'SSN name email telephone_number role'
@@ -25,7 +25,7 @@ exports.getBookings = async (req, res, next) => {
         } else {
             query = Booking.find().populate({
                 path: 'car',
-                select: 'license type model color fuel_type year status'
+                select: 'license type model color fuel_type year price condition number_of_seats status'
             }).populate({
                 path: 'user',
                 select: 'SSN name email telephone_number role'
@@ -49,7 +49,7 @@ exports.getBooking = async (req, res, next) => {
     try {
         const booking = await Booking.find({_id:req.params.id, user:req.user.id}).populate({
             path: 'car',
-            select: 'license type model color fuel_type year status'
+            select: 'license type model color fuel_type year price condition number_of_seats status'
         }).populate({
             path: 'user',
             select: 'SSN name email telephone_number role'
