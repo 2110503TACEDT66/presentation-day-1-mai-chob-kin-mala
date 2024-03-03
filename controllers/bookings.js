@@ -46,14 +46,29 @@ exports.getBookings = async (req, res, next) => {
 };
 
 exports.getBooking = async (req, res, next) => {
-    try {
-        const booking = await Booking.find({_id:req.params.id, user:req.user.id}).populate({
+    let query;
+    if (req.user.role !== 'admin') {
+        query = Booking.findOne({_id:req.params.id, user:req.user.id}).populate({
             path: 'car',
             select: 'license type model color fuel_type year price condition number_of_seats status'
         }).populate({
             path: 'user',
             select: 'SSN name email telephone_number role'
         });
+    }
+    else {
+        query = Booking.findById(req.params.id).populate({
+            path: 'car',
+            select: 'license type model color fuel_type year price condition number_of_seats status'
+        }).populate({
+            path: 'user',
+            select: 'SSN name email telephone_number role'
+        });
+    }
+    
+    try {
+        const booking = await query;
+        // console.log(booking);
         if (!booking) {
             return res
                 .status(404)
@@ -61,6 +76,18 @@ exports.getBooking = async (req, res, next) => {
                     success: false,
                     message: `No booking with the id of ${req.params.id}`,
                 });
+        }
+
+        if (
+            booking.user.toString() !== req.user.id &&
+            req.user.role !== "admin"
+        ) {
+        return res
+            .status(401)
+            .json({
+            success: false,
+            message: `User ${req.user.id} can not access to this booking`,
+            });
         }
 
         res.status(200).json({
