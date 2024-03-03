@@ -1,0 +1,165 @@
+[{
+  "_id": {
+    "$oid": "60d5ecb8b3920c13a39e9a9e"
+  },
+  "SSN": "12345678901234",
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": "password123",
+  "telephone_number": "0123456789",
+  "role": "user",
+  "address": "123 Main St, Anytown, USA",
+  "createdAt": {
+    "$date": "2022-01-01T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "60d5ecb8b3920c13a39e9a9f"
+  },
+  "SSN": "23456789012345",
+  "name": "Jane Doe",
+  "email": "janedoe@example.com",
+  "password": "password456",
+  "telephone_number": "9876543210",
+  "role": "user",
+  "address": "456 Oak St, Othertown, USA",
+  "createdAt": {
+    "$date": "2022-02-01T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "60d5ecb8b3920c13a39e9aa0"
+  },
+  "SSN": "34567890123456",
+  "name": "Bob Smith",
+  "email": "bobsmith@example.com",
+  "password": "password789",
+  "telephone_number": "5551234567",
+  "role": "user",
+  "address": "789 Pine St, Another Town, USA",
+  "createdAt": {
+    "$date": "2022-03-01T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "60d5ecb8b3920c13a39e9aa1"
+  },
+  "SSN": "45678901234567",
+  "name": "Alice Johnson",
+  "email": "alicejohnson@example.com",
+  "password": "passwordabc",
+  "telephone_number": "9870123456",
+  "role": "user",
+  "address": "101 Maple St, Somewhere, USA",
+  "createdAt": {
+    "$date": "2022-04-01T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "60d5ecb8b3920c13a39e9aa2"
+  },
+  "SSN": "56789012345678",
+  "name": "Charlie Brown",
+  "email": "charliebrown@example.com",
+  "password": "passworddef",
+  "telephone_number": "1234567890",
+  "role": "user",
+  "address": "202 Oak St, Anywhere, USA",
+  "createdAt": {
+    "$date": "2022-05-01T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "60d5ecb8b3920c13a39e9aa3"
+  },
+  "SSN": "67890123456789",
+  "name": "Eva Davis",
+  "email": "evadavis@example.com",
+  "password": "passwordghi",
+  "telephone_number": "5556789012",
+  "role": "user",
+  "address": "303 Pine St, Nowhere, USA",
+  "createdAt": {
+    "$date": "2022-06-01T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "60d5ecb8b3920c13a39e9aa4"
+  },
+  "SSN": "78901234567890",
+  "name": "Frank White",
+  "email": "frankwhite@example.com",
+  "password": "passwordjkl",
+  "telephone_number": "9875678901",
+  "role": "user",
+  "address": "404 Maple St, Everywhere, USA",
+  "createdAt": {
+    "$date": "2022-07-01T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "60d5ecb8b3920c13a39e9aa5"
+  },
+  "SSN": "89012345678901",
+  "name": "Grace Miller",
+  "email": "gracemiller@example.com",
+  "password": "passwordmno",
+  "telephone_number": "5558901234",
+  "role": "user",
+  "address": "505 Oak St, Anyplace, USA",
+  "createdAt": {
+    "$date": "2022-08-01T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "60d5ecb8b3920c13a39e9aa6"
+  },
+  "SSN": "90123456789012",
+  "name": "Harry Wilson",
+  "email": "harrywilson@example.com",
+  "password": "passwordpqr",
+  "telephone_number": "1237890123",
+  "role": "user",
+  "address": "606 Pine St, Elsewhere, USA",
+  "createdAt": {
+    "$date": "2022-09-01T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "60d5ecb8b3920c13a39e9aa7"
+  },
+  "SSN": "01234567890123",
+  "name": "Ivy Brown",
+  "email": "ivybrown@example.com",
+  "password": "passwordstu",
+  "telephone_number": "5550123456",
+  "role": "user",
+  "address": "707 Maple St, Here, USA",
+  "createdAt": {
+    "$date": "2022-10-01T00:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65e3bc5bc5274eaa0e247912"
+  },
+  "SSN": "99999999999991",
+  "name": "Admin",
+  "email": "admin@admin.com",
+  "password": "$2a$10$92rrBDpxq3yjs.mtPbHJ8udZUFg8K5pRUbdT1z8cqNUfbWPTJBF1q",
+  "telephone_number": "1234567890",
+  "role": "admin",
+  "createdAt": {
+    "$date": "2024-03-02T23:55:07.184Z"
+  },
+  "__v": 0
+}]

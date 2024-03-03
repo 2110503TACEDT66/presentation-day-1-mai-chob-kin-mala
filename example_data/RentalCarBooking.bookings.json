@@ -1,0 +1,160 @@
+[{
+  "_id": {
+    "$oid": "65e3bbf1732c401515c3dc12"
+  },
+  "car": {
+    "$oid": "60d5ecb8b3920c13a39e9aa6"
+  },
+  "user": {
+    "$oid": "60d5ecb8b3920c13a39e9a9e"
+  },
+  "startDate": "2024-03-03T10:00:00Z",
+  "duration": 5,
+  "totalPrice": 500,
+  "status": "waiting",
+  "deposit": 100
+},
+{
+  "_id": {
+    "$oid": "65e3bbf1732c401515c3dc13"
+  },
+  "car": {
+    "$oid": "60d5ecb8b3920c13a39e9aa7"
+  },
+  "user": {
+    "$oid": "60d5ecb8b3920c13a39e9a9f"
+  },
+  "startDate": "2024-03-04T12:00:00Z",
+  "duration": 3,
+  "totalPrice": 300,
+  "status": "waiting",
+  "deposit": 50
+},
+{
+  "_id": {
+    "$oid": "65e3bbf1732c401515c3dc14"
+  },
+  "car": {
+    "$oid": "60d5ecb8b3920c13a39e9aa8"
+  },
+  "user": {
+    "$oid": "60d5ecb8b3920c13a39e9aa0"
+  },
+  "startDate": "2024-03-05T14:00:00Z",
+  "duration": 7,
+  "totalPrice": 700,
+  "status": "waiting",
+  "deposit": 150
+},
+{
+  "_id": {
+    "$oid": "65e3bbf1732c401515c3dc15"
+  },
+  "car": {
+    "$oid": "60d5ecb8b3920c13a39e9aa9"
+  },
+  "user": {
+    "$oid": "60d5ecb8b3920c13a39e9aa1"
+  },
+  "startDate": "2024-03-06T16:00:00Z",
+  "duration": 4,
+  "totalPrice": 400,
+  "status": "waiting",
+  "deposit": 80
+},
+{
+  "_id": {
+    "$oid": "65e3bbf1732c401515c3dc16"
+  },
+  "car": {
+    "$oid": "60d5ecb8b3920c13a39e9aaa"
+  },
+  "user": {
+    "$oid": "60d5ecb8b3920c13a39e9aa2"
+  },
+  "startDate": "2024-03-07T18:00:00Z",
+  "duration": 6,
+  "totalPrice": 600,
+  "status": "waiting",
+  "deposit": 120
+},
+{
+  "_id": {
+    "$oid": "65e3bbf1732c401515c3dc17"
+  },
+  "car": {
+    "$oid": "60d5ecb8b3920c13a39e9aab"
+  },
+  "user": {
+    "$oid": "65e3be62732c401515c3dc1f"
+  },
+  "startDate": "2024-03-08T20:00:00Z",
+  "duration": 2,
+  "totalPrice": 200,
+  "status": "waiting",
+  "deposit": 40
+},
+{
+  "_id": {
+    "$oid": "65e3bbf1732c401515c3dc18"
+  },
+  "car": {
+    "$oid": "60d5ecb8b3920c13a39e9aac"
+  },
+  "user": {
+    "$oid": "60d5ecb8b3920c13a39e9aa4"
+  },
+  "startDate": "2024-03-09T22:00:00Z",
+  "duration": 8,
+  "totalPrice": 800,
+  "status": "waiting",
+  "deposit": 160
+},
+{
+  "_id": {
+    "$oid": "65e3bbf1732c401515c3dc19"
+  },
+  "car": {
+    "$oid": "60d5ecb8b3920c13a39e9aad"
+  },
+  "user": {
+    "$oid": "60d5ecb8b3920c13a39e9aa5"
+  },
+  "startDate": "2024-03-10T00:00:00Z",
+  "duration": 3,
+  "totalPrice": 300,
+  "status": "waiting",
+  "deposit": 60
+},
+{
+  "_id": {
+    "$oid": "65e3bbf1732c401515c3dc1a"
+  },
+  "car": {
+    "$oid": "60d5ecb8b3920c13a39e9aae"
+  },
+  "user": {
+    "$oid": "60d5ecb8b3920c13a39e9aa6"
+  },
+  "startDate": "2024-03-11T02:00:00Z",
+  "duration": 5,
+  "totalPrice": 500,
+  "status": "waiting",
+  "deposit": 100
+},
+{
+  "_id": {
+    "$oid": "65e3bbf1732c401515c3dc1b"
+  },
+  "car": {
+    "$oid": "60d5ecb8b3920c13a39e9aaf"
+  },
+  "user": {
+    "$oid": "60d5ecb8b3920c13a39e9aa7"
+  },
+  "startDate": "2024-03-12T04:00:00Z",
+  "duration": 6,
+  "totalPrice": 600,
+  "status": "waiting",
+  "deposit": 120
+}]
