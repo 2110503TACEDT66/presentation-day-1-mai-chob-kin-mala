@@ -8,7 +8,6 @@ exports.getCars = async (req, res, next) => {
     const removeFields = ['select', 'sort', 'page', 'limit'];
 
     removeFields.forEach(param => delete reqQuery[param]);
-    console.log(reqQuery);
 
     let queryStr = JSON.stringify(req.query);
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
