@@ -56,7 +56,7 @@ exports.getCars = async (req, res, next) => {
 
         res.status(200).json({ success: true, count: cars.length, pagination, data: cars });
     } catch (err) {
-        res.status(400).json({ success: false, msg:err.stack });
+        res.status(400).json({ success: false, msg: err.stack });
     }
 };
 
@@ -65,7 +65,7 @@ exports.createCar = async (req, res, next) => {
         const car = await Car.create(req.body);
         res.status(201).json({ success: true, data: car });
     } catch (err) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, msg: err.message });
     }
 };
 
@@ -77,7 +77,7 @@ exports.getCar = async (req, res, next) => {
         }
         res.status(200).json({ success: true, data: car });
     } catch (err) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, msg: err.message });
     }
 };
 
@@ -92,7 +92,7 @@ exports.updateCar = async (req, res, next) => {
         }
         res.status(200).json({ success: true, data: car });
     } catch (err) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, msg: err.message });
     }
 };
 
@@ -105,6 +105,6 @@ exports.deleteCar = async (req, res, next) => {
         await car.deleteOne();
         res.status(200).json({ success: true, data: {} });
     } catch (err) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, msg: err.message });
     }
 };
