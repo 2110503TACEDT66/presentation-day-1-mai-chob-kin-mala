@@ -147,19 +147,4 @@
   "createdAt": {
     "$date": "2022-10-01T00:00:00.000Z"
   }
-},
-{
-  "_id": {
-    "$oid": "65e3bc5bc5274eaa0e247912"
-  },
-  "SSN": "99999999999991",
-  "name": "Admin",
-  "email": "admin@admin.com",
-  "password": "$2a$10$92rrBDpxq3yjs.mtPbHJ8udZUFg8K5pRUbdT1z8cqNUfbWPTJBF1q",
-  "telephone_number": "1234567890",
-  "role": "admin",
-  "createdAt": {
-    "$date": "2024-03-02T23:55:07.184Z"
-  },
-  "__v": 0
 }]
