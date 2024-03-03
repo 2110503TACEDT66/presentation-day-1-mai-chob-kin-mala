@@ -79,7 +79,7 @@ exports.getBooking = async (req, res, next) => {
         }
 
         if (
-            booking.user.toString() !== req.user.id &&
+            booking.user._id.toString() !== req.user.id &&
             req.user.role !== "admin"
         ) {
         return res
