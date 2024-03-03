@@ -43,3 +43,27 @@ exports.getBookings = async (req, res, next) => {
         return res.status(500).json({ success: false, message: "Cannot find Appointment" });
     }
 };
+
+exports.updateAppointment = async (req, res, next) => {
+    try{
+        let booking = await Booking.findById(req.params.id);
+
+        if(!booking) {
+            return res.status(404).json({success:false, message:`No appointment with the id of ${req.params.id}`});
+        }
+
+        booking = Booking.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        });
+
+        res.status(200).json({
+            success: true,
+            data: booking
+        });
+    }
+    catch (err){
+        console.log(err);
+        return res.status(500).json({success: false, message:"Cannot update Booking"});
+    }
+}
