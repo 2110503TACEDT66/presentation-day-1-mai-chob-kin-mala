@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Booking = require("./Booking");
 
 const CarSchema = mongoose.Schema({
     license: {
@@ -76,7 +77,7 @@ CarSchema.virtual('bookings', {
 
 CarSchema.pre('deleteOne',{document: true, query: false}, async function(next){
     console.log(`Bookings being removed from car ${this._id}`);
-    await this.model('Booking').deleteMany({hospital: this._id});
+    await Booking.deleteMany({car: this._id});
     next();
 });
 
