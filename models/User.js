@@ -56,6 +56,12 @@ UserSchema.pre("save", async function (next) {
     next();
 });
 
+CarSchema.pre('deleteOne',{document: true, query: false}, async function(next){
+    console.log(`Bookings being removed from user ${this._id}`);
+    await this.model('Booking').deleteMany({hospital: this._id});
+    next();
+});
+
 UserSchema.methods.getSignedJwtToken = function (enteredPassword) {
     return jsonwebtoken.sign({ id: this._id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRE,
