@@ -170,6 +170,84 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Car Bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/cars/1/bookings",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"1",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\": {\r\n    \"$oid\": \"60d5ecb8b3920c13a39e9aa0\"\r\n  },\r\n  \"startDate\": \"2025-19-05T14:00:00Z\",\r\n  \"duration\": 7,\r\n  \"totalPrice\": 800,\r\n  \"deposit\": 150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/cars/1/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -183,7 +261,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"SSN\": \"12345678901234\",\r\n    \"name\": \"Admin\",\r\n    \"email\":\"admin@admin.com\",\r\n    \"password\":\"12345678\",\r\n    \"telephone_number\": \"1234567890\",\r\n    \"role\": \"admin\"\r\n}",
+							"raw": "{\r\n    \"SSN\": \"99999999999991\",\r\n    \"name\": \"Admin\",\r\n    \"email\":\"admin@admin.com\",\r\n    \"password\":\"12345678\",\r\n    \"telephone_number\": \"1234567890\",\r\n    \"role\": \"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -352,7 +430,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Car Bookings",
+					"name": "Get One Booking",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -367,16 +445,84 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/api/v1/cars/1/bookings",
+							"raw": "{{URL}}/api/v1/bookings/1",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
 								"v1",
-								"cars",
-								"1",
-								"bookings"
+								"bookings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"used\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/bookings/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/bookings/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"bookings",
+								"1"
 							]
 						}
 					},
