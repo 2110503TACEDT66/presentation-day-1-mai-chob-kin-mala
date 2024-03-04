@@ -1,6 +1,6 @@
-const RentalCar = require("../models/Shop")
+const Shop = require("../models/Shop")
 
-exports.getShop = async (req, res, next)=>{
+exports.getShops = async (req, res, next)=>{
     let query;
 
     const reqQuery = {...req.query};
@@ -11,10 +11,7 @@ exports.getShop = async (req, res, next)=>{
 
     let queryStr = JSON.stringify(req.query);
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
-    query = RentalCar.find(JSON.parse(queryStr)).populate({
-        path: 'shop',
-        select: 'name address phone openingHours rating'
-    });
+    query = Shop.find(JSON.parse(queryStr)).populate('cars');
 
     if(req.query.select) {
         const fields = req.query.select.split(',').join(' ');
@@ -32,7 +29,7 @@ exports.getShop = async (req, res, next)=>{
     const limit = parseInt(req.query.limit, 10) || 25;
     const startIndex = (page-1) * limit;
     const endIndex = page * limit
-    const total = await RentalCar.countDocuments();
+    const total = await Shop.countDocuments();
 
     query=query.skip(startIndex).limit(limit);
 
@@ -63,18 +60,51 @@ exports.getShop = async (req, res, next)=>{
     }
 }
 
-exports.getShops = async (req, res, next)=>{
-    
+exports.getShop = async (req, res, next)=>{
+    try {
+        const shop = await Shop.findById(req.params.id).populate('cars');;
+        if (!shop) {
+            return res.status(400).json({ success: false });
+        }
+        res.status(200).json({ success: true, data: shop });
+    } catch (err) {
+        res.status(400).json({ success: false, msg: err.message });
+    }
 }
 
 exports.createShop = async (req, res, next)=>{
-    
+    try {
+        const shop = await Shop.create(req.body);
+        res.status(201).json({ success: true, data: shop });
+    } catch (err) {
+        res.status(400).json({ success: false, msg: err.message });
+    }
 }
 
 exports.updateShop = async (req, res, next)=>{
-    
+    try {
+        const shop = await Shop.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true,
+        });
+        if (!shop) {
+            return res.status(400).json({ success: false });
+        }
+        res.status(200).json({ success: true, data: shop });
+    } catch (err) {
+        res.status(400).json({ success: false, msg: err.message });
+    }
 }
 
 exports.deleteShop = async (req, res, next)=>{
-    
+    try {
+        const shop = await Shop.findById(req.params.id);
+        if (!shop) {
+            return res.status(400).json({ success: false });
+        }
+        await shop.deleteOne();
+        res.status(200).json({ success: true, data: {} });
+    } catch (err) {
+        res.status(400).json({ success: false, msg: err.message });
+    }
 }
