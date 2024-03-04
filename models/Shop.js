@@ -29,6 +29,13 @@ const ShopSchema = mongoose.Schema({
     }
 });
 
+ShopSchema.virtual('cars', {
+    ref: 'Car',
+    localField: '_id',
+    foreignField: 'car',
+    justOne: false
+});
+
 ShopSchema.pre('deleteOne',{document: true, query: false}, async function(next){
     console.log(`Cars being removed from shop ${this._id}`);
     await Car.deleteMany({shop: this._id});
