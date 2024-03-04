@@ -62,6 +62,11 @@ const CarSchema = mongoose.Schema({
             "broken"
         ],
         default: "available"
+    },
+    shop: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, "Please add a shop Id"],
+       
     }
 },{
     toJSON: {virtuals: true},
