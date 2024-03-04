@@ -1,0 +1,105 @@
+@startuml
+left to right direction
+package "RentalCarBooking"{
+    class "<<Application>>\nRentalCarBooking" as RentalCarBooking{}
+
+    class "<<Resorce>>\nCars" as Cars{
+        <<GET>> +getCars():Cars
+        <<POST>> +createCar():Car
+    }
+    class "<<Resorce>>\nCar" as Car{
+        <<GET>> +getCar():Car
+        <<PUT>> +updateCar():Car
+        <<DELETE>> +deleteCar():void
+    }
+
+    class "<<Resorce>>\nBookings" as Bookings{
+        <<GET>> +getBookings():Bookings
+        <<POST>> +createBooking():Booking
+    }
+
+    class "<<Resorce>>\nBooking" as Booking{
+        <<GET>> +getBooking():Booking
+        <<PUT>> +updateBooking():Booking
+        <<DELETE>> +deleteBooking():void
+    }
+    
+    class "<<Resorce>>\nAuthentication" as Auth{}
+
+    class "<<Resorce>>\nRegister" as Reg{
+        <<POST>> +register():Authentication
+    }
+    class "<<Resorce>>\nLogin" as Login{
+        <<POST>> +login():Authentication
+    }
+    class "<<Resorce>>\nLogout" as Logout{
+        <<GET>> +logout():void
+    }
+    class "<<Resorce>>\nGetMe" as GetMe{
+        <<GET>> +getMe():User
+    }
+
+    class "<<Representation>>\nCar" as CarRep{
+        - license
+        - type
+        - model
+        - color
+        - feul_type
+        - year
+        - price
+        - mileage
+        - condition
+        - image
+        - number_of_seats
+        - status
+    }
+    class "<<Representation>>\nUser" as UserRep{
+        - SSN
+        - name
+        - email
+        - password
+        - telephone_number
+        - role
+        - address
+        - resetPasswordToken
+        - resetPasswordExpire
+        - createdAt
+    }
+    class "<<Representation>>\nBooking" as BookingRep{
+        - car
+        - user
+        - startDate
+        - endDate
+        - duration
+        - totalPrice
+        - status
+        - deposit
+        - after
+        - createdAt
+    }
+}
+RentalCarBooking ..> Cars:"/car\n<<Path>>"
+RentalCarBooking ..> Auth:"/auth\n<<Path>>"
+RentalCarBooking ..> Bookings:"/bookings\n<<Path>>"
+
+
+Auth..>Reg:"/register\n<<Path>>"
+Auth..>Login:"/login\n<<Path>>"
+Auth..>Logout:"/logout\n<<Path>>"
+Auth..>GetMe:"/me\n<<Path>>"
+
+Reg..>UserRep:"<<Use>>"
+Login..>UserRep:"<<Use>>"
+Logout..>UserRep:"<<Use>>"
+GetMe..>UserRep:"<<Use>>"
+Booking..>BookingRep:"<<Use>>"
+Car ..> CarRep:"<<Use>>"
+
+Bookings..>Booking:/(bookingId)\n<<Path>>"
+Cars ..> Car:"/(carId)\n<<Path>>"
+
+
+
+
+
+@enduml
