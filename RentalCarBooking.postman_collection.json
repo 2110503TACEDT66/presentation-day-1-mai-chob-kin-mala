@@ -1,256 +1,11 @@
 {
 	"info": {
-		"_postman_id": "a9b1cef1-54c2-490a-9240-76203615af7c",
+		"_postman_id": "29579278-bc9a-4038-8332-dc838979a5fb",
 		"name": "RentalCarBooking",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33090496"
+		"_exporter_id": "33091096"
 	},
 	"item": [
-		{
-			"name": "Cars",
-			"item": [
-				{
-					"name": "Create New Car",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON Type",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"license\": \"ZZZ666\",\r\n  \"type\": \"Sedan\",\r\n  \"model\": \"Toyota Camry\",\r\n  \"color\": [\"Silver\"],\r\n  \"fuel_type\": \"Gasoline\",\r\n  \"year\": 2020,\r\n  \"mileage\": 30000,\r\n  \"condition\": \"Excellent\",\r\n  \"image\": [\"https://example.com/car1.jpg\"],\r\n  \"number_of_seats\": 5\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/api/v1/cars/",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"cars",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get All Cars",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/api/v1/cars/",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"cars",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Single Car",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/api/v1/cars/1",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"cars",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Single Car",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON Type",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"color\": [\"Black\", \"White\"],\r\n    \"fuel_type\": \"Hybrid\",\r\n    \"year\": 2023,\r\n    \"mileage\": 10000\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/api/v1/cars/1",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"cars",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Single Car",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/api/v1/cars/1",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"cars",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Car Bookings",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/api/v1/cars/1/bookings",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"cars",
-								"1",
-								"bookings"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Booking",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": "JSON Type",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"user\": {\r\n    \"$oid\": \"60d5ecb8b3920c13a39e9aa0\"\r\n  },\r\n  \"startDate\": \"2025-19-05T14:00:00Z\",\r\n  \"duration\": 7,\r\n  \"totalPrice\": 800,\r\n  \"deposit\": 150\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/api/v1/cars/1/",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"cars",
-								"1",
-								""
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
 		{
 			"name": "Authentication",
 			"item": [
@@ -261,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"SSN\": \"99999999999991\",\r\n    \"name\": \"Admin\",\r\n    \"email\":\"admin@admin.com\",\r\n    \"password\":\"12345678\",\r\n    \"telephone_number\": \"1234567890\",\r\n    \"role\": \"admin\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -281,7 +36,86 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"SSN\": \"19999999999999\",\r\n    \"name\": \"User\",\r\n    \"email\":\"user@user.com\",\r\n    \"password\":\"12345678\",\r\n    \"telephone_number\": \"1234567890\",\r\n    \"role\": \"user\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/auth/register",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"SSN\": \"99999999999991\",\r\n    \"name\": \"Admin\",\r\n    \"email\":\"admin@admin.com\",\r\n    \"password\":\"12345678\",\r\n    \"telephone_number\": \"1234567890\",\r\n    \"role\": \"admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/auth/register",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
 				},
 				{
 					"name": "Login",
@@ -301,7 +135,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"admin@admin.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -321,7 +155,118 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"user@user.com\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/auth/login",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"admin@admin.com\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/auth/login",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "$gt test",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":{\"$gt\":\"\"},\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/auth/login",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
 				},
 				{
 					"name": "Get Logged In User with Token",
@@ -394,6 +339,567 @@
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{TOKEN}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Cars",
+			"item": [
+				{
+					"name": "Create New Car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"license\": \"17VWX234\",\r\n    \"type\": \"Hatchback\",\r\n    \"model\": \"Civic\",\r\n    \"color\": [\"Black\"],\r\n    \"fuel_type\": \"Gasoline\",\r\n    \"year\": 2022,\r\n    \"price\": 550,\r\n    \"mileage\": 9000,\r\n    \"condition\": \"Used\",\r\n    \"image\": [\"image16.jpg\"],\r\n    \"number_of_seats\": 5,\r\n    \"status\": \"available\",\r\n    \"shop\": \"65e589d2eba7874ab6774534\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/cars/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "incomplete required fields",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"license\": \"AAA111\",\r\n    \"type\": \"Sedan\",\r\n    \"model\": \"Toyota Camry\",\r\n    \"color\": [\r\n        \"Silver\"\r\n    ],\r\n    \"fuel_type\": \"Gasoline\",\r\n    \"year\": 2020,\r\n    \"price\": 800,\r\n    \"mileage\": 30000,\r\n    \"condition\": \"Excellent\",\r\n    \"image\": [\r\n        \"https://example.com/car1.jpg\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/cars/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "wrong type",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"license\": \"BBB111\",\r\n    \"type\": \"Sedan\",\r\n    \"model\": \"Toyota Camry\",\r\n    \"color\": [\r\n        \"Silver\"\r\n    ],\r\n    \"fuel_type\": \"Gasoline\",\r\n    \"year\": 2020,\r\n    \"price\": 800,\r\n    \"mileage\": \"หอย\",\r\n    \"condition\": \"Excellent\",\r\n    \"image\": [\r\n        \"https://example.com/car1.jpg\"\r\n    ],\r\n    \"number_of_seats\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/cars/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "duplicate",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"license\": \"VVV777\",\r\n        \"type\": \"Sedan\",\r\n        \"model\": \"Toyota Camry\",\r\n        \"color\": [\r\n            \"Silver\"\r\n        ],\r\n        \"fuel_type\": \"Gasoline\",\r\n        \"year\": 2020,\r\n        \"price\": 700,\r\n        \"mileage\": 30000,\r\n        \"condition\": \"Excellent\",\r\n        \"image\": [\r\n            \"https://example.com/car1.jpg\"\r\n        ],\r\n        \"number_of_seats\": 5\r\n    },\r\n    {\r\n        \"license\": \"VVV777\",\r\n        \"type\": \"Sedan\",\r\n        \"model\": \"Toyota Camry\",\r\n        \"color\": [\r\n            \"Silver\"\r\n        ],\r\n        \"fuel_type\": \"Gasoline\",\r\n        \"year\": 2020,\r\n        \"price\": 800,\r\n        \"mileage\": 30000,\r\n        \"condition\": \"Excellent\",\r\n        \"image\": [\r\n            \"https://example.com/car1.jpg\"\r\n        ],\r\n        \"number_of_seats\": 5\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/cars/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "complete required fields",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"license\": \"ZZZ666\",\r\n    \"type\": \"Sedan\",\r\n    \"model\": \"Toyota Camry\",\r\n    \"color\": [\r\n        \"Silver\"\r\n    ],\r\n    \"fuel_type\": \"Gasoline\",\r\n    \"year\": 2020,\r\n    \"price\": 800,\r\n    \"mileage\": 30000,\r\n    \"condition\": \"Excellent\",\r\n    \"image\": [\r\n        \"https://example.com/car1.jpg\"\r\n    ],\r\n    \"number_of_seats\": 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/cars/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get All Cars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/cars/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Car",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/cars/60d5ecb8b3920c13a39e9aa6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"60d5ecb8b3920c13a39e9aa6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Single Car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"color\": [\"Black\", \"White\"],\r\n    \"fuel_type\": \"Hybrid\",\r\n    \"year\": 2023,\r\n    \"mileage\": 10000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/cars/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "wrongID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"color\": [\"Black\", \"White\"],\r\n    \"fuel_type\": \"Hybrid\",\r\n    \"year\": 2023,\r\n    \"mileage\": 10000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/cars/1",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										"1"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "wrong type",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"color\": [\"Black\", \"White\"],\r\n    \"fuel_type\": \"Hybrid\",\r\n    \"year\": \"หอย\",\r\n    \"mileage\": 10000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/cars/60d5ecb8b3920c13a39e9aa6",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										"60d5ecb8b3920c13a39e9aa6"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "correct",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": "JSON Type",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"color\": [\"Black\", \"White\"],\r\n    \"fuel_type\": \"Hybrid\",\r\n    \"year\": 2023,\r\n    \"mileage\": 10000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/cars/60d5ecb8b3920c13a39e9aa6",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										"60d5ecb8b3920c13a39e9aa6"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Add Booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"BOOKING\",pm.response.json().data._id)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": "JSON Type",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"startDate\": \"2024-03-31T15:00:00.000Z\",\r\n  \"duration\": 1,\r\n  \"totalPrice\": 100,\r\n  \"deposit\": 25\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/cars/65e58caceba7874ab67745ac/bookings",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"65e58caceba7874ab67745ac",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Car Bookings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/cars/65e58caceba7874ab67745ac/bookings",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"65e58caceba7874ab67745ac",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Single Car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/cars/60d5ecb8b3920c13a39e9aaf",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cars",
+								"60d5ecb8b3920c13a39e9aaf"
+							]
+						}
+					},
+					"response": []
+				}
 			]
 		},
 		{
@@ -445,7 +951,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/api/v1/bookings/1",
+							"raw": "{{URL}}/api/v1/bookings/65e3bbf1732c401515c3dc15",
 							"host": [
 								"{{URL}}"
 							],
@@ -453,11 +959,58 @@
 								"api",
 								"v1",
 								"bookings",
-								"1"
+								"65e3bbf1732c401515c3dc15"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "own booking",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/bookings/{{BOOKING}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"bookings",
+										"{{BOOKING}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "other booking",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/bookings/65e3bbf1732c401515c3dc13",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"bookings",
+										"65e3bbf1732c401515c3dc13"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
 				},
 				{
 					"name": "Update Booking",
@@ -484,7 +1037,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/v1/bookings/1",
+							"raw": "{{URL}}/api/v1/bookings/65e3bbf1732c401515c3dc15",
 							"host": [
 								"{{URL}}"
 							],
@@ -492,11 +1045,76 @@
 								"api",
 								"v1",
 								"bookings",
-								"1"
+								"65e3bbf1732c401515c3dc15"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "own booking",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\":\"used\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/bookings/{{BOOKING}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"bookings",
+										"{{BOOKING}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "other booking",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\":\"used\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/bookings/65e3bbf1732c401515c3dc13",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"bookings",
+										"65e3bbf1732c401515c3dc13"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
 				},
 				{
 					"name": "Delete Booking",
@@ -514,7 +1132,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/api/v1/bookings/1",
+							"raw": "{{URL}}/api/v1/bookings/65e3bbf1732c401515c3dc15",
 							"host": [
 								"{{URL}}"
 							],
@@ -522,7 +1140,339 @@
 								"api",
 								"v1",
 								"bookings",
-								"1"
+								"65e3bbf1732c401515c3dc15"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "own booking",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/bookings/{{BOOKING}}",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"bookings",
+										"{{BOOKING}}"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Delete Booking",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/v1/bookings/65e3bbf1732c401515c3dc13",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"bookings",
+										"65e3bbf1732c401515c3dc13"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Shops",
+			"item": [
+				{
+					"name": "Get All Shops",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/shops/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"shops",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Shop",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/shops/65e5807d5f0de55bbbfeec13",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"shops",
+								"65e5807d5f0de55bbbfeec13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Shop",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"FastWheels\",\r\n    \"address\": \"789 Maple Street, Villagetown\",\r\n    \"phone\": \"5551234567\",\r\n    \"openingHours\": \"Mon-Sat: 10 am - 8 pm\",\r\n    \"rating\": 4.5\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/shops/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"shops",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "correct",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"PonLnwzaShop\",\r\n    \"address\": \"Bankkok\",\r\n    \"phone\": \"0965262095\",\r\n    \"openingHours\": \"00.00 - 23.59\",\r\n    \"rating\": \"5\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/shops/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shops",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Hack Sctipts Test",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"HackShop <script>alert(1)</script>\",\r\n    \"address\": \"Hackland\",\r\n    \"phone\": \"9999999999\",\r\n    \"openingHours\": \"24.01 - 00.60\",\r\n    \"rating\": \"5\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/shops/",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shops",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Update Single Shop",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"PonLnwzaShop\",\r\n    \"address\": \"Bankkok\",\r\n    \"phone\": \"0965262095\",\r\n    \"openingHours\": \"00.00 - 00.01\",\r\n    \"rating\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/shops/65e572f5e3584e0edf281e59",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"shops",
+								"65e572f5e3584e0edf281e59"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "correct",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"PonLnwzaShop\",\r\n    \"address\": \"Bankkok\",\r\n    \"phone\": \"0965262095\",\r\n    \"openingHours\": \"00.00 - 00.01\",\r\n    \"rating\": \"0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/v1/shops/65e572f5e3584e0edf281e59",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"shops",
+										"65e572f5e3584e0edf281e59"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Delete Single Shop",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/shops/65e589d2eba7874ab6774534",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"shops",
+								"65e589d2eba7874ab6774534"
 							]
 						}
 					},
