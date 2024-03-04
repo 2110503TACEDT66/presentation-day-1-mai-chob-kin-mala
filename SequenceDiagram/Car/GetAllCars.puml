@@ -1,0 +1,23 @@
+@startuml Get All Cars (GET)
+
+header Sameple RentalCarBooking Sequence Diagram
+footer Page %page% of %lastpage%
+title "Get All Cars (GET)"
+
+participant "Client" as client
+participant "<<javaScript>>\n:server" as server
+participant "<<router>>\n:cars" as routerCars
+participant "<<controllers>>\n:cars" as controllersCars
+participant "<<model>>\n:Car" as modelCar
+database "<<MongoDB>>\n:cars" as CarsDatabase
+
+client->server ++:req.get('/api/v1/cars')
+server->routerCars ++:app.use('/api/v1/cars',cars)
+routerCars -> controllersCars ++:getCars ()
+controllersCars->modelCar ++:Car.find(query)
+modelCar->CarsDatabase ++:CarSchema
+CarsDatabase --> modelCar --:cars
+modelCar --> controllersCars --:cars
+controllersCars->client --:response
+
+@enduml
