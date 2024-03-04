@@ -1,7 +1,6 @@
-const Car = require("../models/Car");
-const Shop = require("../models/Shop");
+const Shop = require("../models/Shop")
 
-exports.getCars = async (req, res, next) => {
+exports.getShops = async (req, res, next)=>{
     let query;
 
     const reqQuery = {...req.query};
@@ -12,10 +11,7 @@ exports.getCars = async (req, res, next) => {
 
     let queryStr = JSON.stringify(req.query);
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
-    query = Car.find(JSON.parse(queryStr)).populate('bookings').populate({
-        path: 'shop',
-        select: 'name address phone openingHours rating createdAt'
-    });
+    query = Shop.find(JSON.parse(queryStr)).populate('cars');
 
     if(req.query.select) {
         const fields = req.query.select.split(',').join(' ');
@@ -33,12 +29,12 @@ exports.getCars = async (req, res, next) => {
     const limit = parseInt(req.query.limit, 10) || 25;
     const startIndex = (page-1) * limit;
     const endIndex = page * limit
-    const total = await Car.countDocuments();
+    const total = await Shop.countDocuments();
 
     query=query.skip(startIndex).limit(limit);
 
     try {
-        const cars = await query;
+        const shops = await query;
 
         const pagination = {
             current:page,
@@ -58,72 +54,57 @@ exports.getCars = async (req, res, next) => {
             }
         }
 
-        res.status(200).json({ success: true, count: cars.length, pagination, data: cars });
+        res.status(200).json({ success: true, count: shops.length, pagination, data: shops });
     } catch (err) {
         res.status(400).json({ success: false, msg: err.stack });
     }
-};
+}
 
-exports.createCar = async (req, res, next) => {
+exports.getShop = async (req, res, next)=>{
     try {
-        const shop = await Shop.findById(req.params.shopId);
-        
+        const shop = await Shop.findById(req.params.id).populate('cars');;
         if (!shop) {
-            return res.status(404).json({
-                success: false,
-                message: `No shop with the id of ${req.params.shopId}`
-            });
-        }
-
-        req.body.shop = req.params.shopId;
-
-        const car = await Car.create(req.body);
-        res.status(201).json({ success: true, data: car });
-    } catch (err) {
-        res.status(400).json({ success: false, msg: err.message });
-    }
-};
-
-exports.getCar = async (req, res, next) => {
-    try {
-        const car = await Car.findById(req.params.id).populate('bookings').populate({
-            path: 'shop',
-            select: 'name address phone openingHours rating createdAt'
-        });
-        
-        if (!car) {
             return res.status(400).json({ success: false });
         }
-        res.status(200).json({ success: true, data: car });
+        res.status(200).json({ success: true, data: shop });
     } catch (err) {
         res.status(400).json({ success: false, msg: err.message });
     }
-};
+}
 
-exports.updateCar = async (req, res, next) => {
+exports.createShop = async (req, res, next)=>{
     try {
-        const car = await Car.findByIdAndUpdate(req.params.id, req.body, {
+        const shop = await Shop.create(req.body);
+        res.status(201).json({ success: true, data: shop });
+    } catch (err) {
+        res.status(400).json({ success: false, msg: err.message });
+    }
+}
+
+exports.updateShop = async (req, res, next)=>{
+    try {
+        const shop = await Shop.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
             runValidators: true,
         });
-        if (!car) {
+        if (!shop) {
             return res.status(400).json({ success: false });
         }
-        res.status(200).json({ success: true, data: car });
+        res.status(200).json({ success: true, data: shop });
     } catch (err) {
         res.status(400).json({ success: false, msg: err.message });
     }
-};
+}
 
-exports.deleteCar = async (req, res, next) => {
+exports.deleteShop = async (req, res, next)=>{
     try {
-        const car = await Car.findById(req.params.id);
-        if (!car) {
+        const shop = await Shop.findById(req.params.id);
+        if (!shop) {
             return res.status(400).json({ success: false });
         }
-        await car.deleteOne();
+        await shop.deleteOne();
         res.status(200).json({ success: true, data: {} });
     } catch (err) {
         res.status(400).json({ success: false, msg: err.message });
     }
-};
+}

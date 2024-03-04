@@ -208,7 +208,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/v1/cars/65e5a6f506fa947dc4c18062/bookings",
+							"raw": "{{URL}}/api/v1/cars/{{carr}}/bookings",
 							"host": [
 								"{{URL}}"
 							],
@@ -216,7 +216,7 @@
 								"api",
 								"v1",
 								"cars",
-								"65e5a6f506fa947dc4c18062",
+								"{{carr}}",
 								"bookings"
 							]
 						}
@@ -270,7 +270,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/v1/cars/65e5a6f506fa947dc4c18062/bookings",
+							"raw": "{{URL}}/api/v1/cars/{{carr}}/bookings",
 							"host": [
 								"{{URL}}"
 							],
@@ -278,7 +278,7 @@
 								"api",
 								"v1",
 								"cars",
-								"65e5a6f506fa947dc4c18062",
+								"{{carr}}",
 								"bookings"
 							]
 						}
@@ -292,7 +292,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 500\", function () {\r",
+									"pm.test(\"Status code is 201\", function () {\r",
 									"    pm.response.to.have.status(500);\r",
 									"});\r",
 									"\r",
@@ -332,7 +332,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/v1/cars/65e5a6f506fa947dc4c18062/bookings",
+							"raw": "{{URL}}/api/v1/cars/{{carr}}/bookings",
 							"host": [
 								"{{URL}}"
 							],
@@ -340,7 +340,7 @@
 								"api",
 								"v1",
 								"cars",
-								"65e5a6f506fa947dc4c18062",
+								"{{carr}}",
 								"bookings"
 							]
 						}
@@ -520,13 +520,11 @@
 									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"\r",
-									"\r",
 									"const response = pm.response.json();\r",
-									"\r",
 									"const new_booking_id = response.data._id;\r",
 									"\r",
-									"\r",
 									"pm.globals.set(\"global_BOOKING\", new_booking_id);\r",
+									"\r",
 									"\r",
 									"\r",
 									"postman.setNextRequest(\"Logout\");"
@@ -574,7 +572,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/v1/cars/65e5a6f506fa947dc4c18062/bookings",
+							"raw": "{{URL}}/api/v1/cars/{{carr}}/bookings",
 							"host": [
 								"{{URL}}"
 							],
@@ -582,7 +580,7 @@
 								"api",
 								"v1",
 								"cars",
-								"65e5a6f506fa947dc4c18062",
+								"{{carr}}",
 								"bookings"
 							]
 						}
@@ -865,11 +863,6 @@
 		{
 			"key": "URL",
 			"value": "http://backendproject-envbackendproject.eba-vej8mnur.us-east-1.elasticbeanstalk.com",
-			"type": "string"
-		},
-		{
-			"key": "carr",
-			"value": "",
 			"type": "string"
 		}
 	]
