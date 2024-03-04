@@ -26,13 +26,20 @@ const ShopSchema = mongoose.Schema({
         type: Number,
         min: 0,
         max: 5
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now()
     }
+},{
+    toJSON: {virtuals: true},
+    toObject: {virtuals: true}
 });
 
 ShopSchema.virtual('cars', {
     ref: 'Car',
     localField: '_id',
-    foreignField: 'car',
+    foreignField: 'shop',
     justOne: false
 });
 

@@ -66,7 +66,7 @@ const CarSchema = mongoose.Schema({
     shop: {
         type: mongoose.Schema.Types.ObjectId,
         required: [true, "Please add a shop Id"],
-       
+        ref: 'Shop'
     }
 },{
     toJSON: {virtuals: true},

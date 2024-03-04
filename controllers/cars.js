@@ -11,7 +11,10 @@ exports.getCars = async (req, res, next) => {
 
     let queryStr = JSON.stringify(req.query);
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
-    query = Car.find(JSON.parse(queryStr)).populate('bookings');
+    query = Car.find(JSON.parse(queryStr)).populate('bookings').populate({
+        path: 'shop',
+        select: 'name address phone openingHours rating createdAt'
+    });
 
     if(req.query.select) {
         const fields = req.query.select.split(',').join(' ');
@@ -71,7 +74,11 @@ exports.createCar = async (req, res, next) => {
 
 exports.getCar = async (req, res, next) => {
     try {
-        const car = await Car.findById(req.params.id).populate('bookings');;
+        const car = await Car.findById(req.params.id).populate('bookings').populate({
+            path: 'shop',
+            select: 'name address phone openingHours rating createdAt'
+        });
+        
         if (!car) {
             return res.status(400).json({ success: false });
         }
