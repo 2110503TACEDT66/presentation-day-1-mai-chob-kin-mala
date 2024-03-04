@@ -1,4 +1,5 @@
 const Car = require("../models/Car");
+const Shop = require("../models/Shop");
 
 exports.getCars = async (req, res, next) => {
     let query;
@@ -65,6 +66,17 @@ exports.getCars = async (req, res, next) => {
 
 exports.createCar = async (req, res, next) => {
     try {
+        const shop = await Shop.findById(req.params.shopId);
+        
+        if (!shop) {
+            return res.status(404).json({
+                success: false,
+                message: `No shop with the id of ${req.params.shopId}`
+            });
+        }
+
+        req.body.shop = req.params.shopId;
+
         const car = await Car.create(req.body);
         res.status(201).json({ success: true, data: car });
     } catch (err) {
