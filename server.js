@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const {xss} = require('express-xss-sanitizer');
 const ratelimit = require('express-rate-limit');
 const hpp = require('hpp');
+const cors = require('cors');
 
 const cars = require("./routes/cars");
 const auth = require("./routes/auth");
@@ -30,6 +31,7 @@ app.use(helmet());
 app.use(xss());
 app.use(limiter);
 app.use(hpp());
+app.use(cors());
 
 app.use("/api/v1/cars", cars);
 app.use("/api/v1/auth", auth);
