@@ -24,6 +24,8 @@ const limiter = ratelimit.rateLimit({
 
 connectDB();
 
+app.use(limiter);
+app.set('trust proxy', true);
 app.use(express.json());
 app.use(cookieParser());
 app.use(mongoSanitize());
