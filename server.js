@@ -45,8 +45,7 @@ const server = app.listen(PORT, () => {
         "Server running in",
         process.env.HOST+
         ":"+
-        PORT+
-        "/api/v1/"
+        PORT
     );
 });
 
