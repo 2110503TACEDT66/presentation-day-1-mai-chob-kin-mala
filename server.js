@@ -24,12 +24,13 @@ const limiter = ratelimit.rateLimit({
 
 connectDB();
 
+// app.use(limiter);
+// app.set('trust proxy', true);
 app.use(express.json());
 app.use(cookieParser());
 app.use(mongoSanitize());
 app.use(helmet());
 app.use(xss());
-app.use(limiter);
 app.use(hpp());
 app.use(cors());
 
@@ -38,12 +39,12 @@ app.use("/api/v1/auth", auth);
 app.use("/api/v1/bookings", bookings);
 app.use("/api/v1/shops", shops);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 const server = app.listen(PORT, () => {
     console.log(
         "Server running in",
-        process.env.NODE_ENV,
-        "mode on PORT",
+        process.env.HOST+
+        ":"+
         PORT
     );
 });
