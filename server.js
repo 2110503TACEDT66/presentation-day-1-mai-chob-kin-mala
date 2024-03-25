@@ -29,7 +29,6 @@ app.use(cookieParser());
 app.use(mongoSanitize());
 app.use(helmet());
 app.use(xss());
-app.use(limiter);
 app.use(hpp());
 app.use(cors());
 
