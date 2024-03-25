@@ -4,6 +4,9 @@ const Car = require("./Car");
 
 
 const ShopSchema = mongoose.Schema({
+    image: {
+        type: String,
+    },
     name: {
         type: String,
         required: [true, 'Name is required'],

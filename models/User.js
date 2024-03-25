@@ -3,6 +3,9 @@ const jsonwebtoken = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 const UserSchema = mongoose.Schema({
+    image: {
+        type: String,
+    },
     SSN: {
         type: String,
         unique: [true, "This SSN is already used"],
